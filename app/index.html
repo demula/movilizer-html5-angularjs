@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="MovilizerApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>Movilizer HTML5 with AngularJS!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/movilizer.css">
+
+    <!-- Masterdata mock values goes here -->
+    <script type="text/javascript" charset="utf-8" src="plugins/MD_PRODUCT.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+    <!-- External JS libraries that absolutly have to load from the very beginning -->
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/angular-route.min.js"></script>
+
+    <!-- User scripts -->
+    <!-- App -->
+    <script src="js/app.js"></script>
+    <!-- HelloBannerModule -->
+    <script src="components/helloBanner/helloBanner.js"></script>
+    <script src="components/helloBanner/controllers/banner.js"></script>
+
+</head>
+
+<body>
+    <div ng-view></div>
+</body>
+
+</html>

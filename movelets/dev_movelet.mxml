@@ -1,0 +1,27 @@
+<MovilizerRequest systemId="${#Project#SystemID}" systemPassword="${#Project#Password}" requestTrackingKey=""
+                  useAutoAcknowledge="true" xmlns="http://movilitas.com/movilizer/v11">
+    <moveletDelete moveletKey="MOV01" />
+    <moveletSet>
+        <movelet moveletKey="MOV01" name="myMovelet" moveletType="MULTI" initialQuestionKey="#1" >
+            <question type="0" title="myScreen" key="#1">
+                <answer key="#1_1" nextQuestionKey="#2">
+                    <text>The next screen is an HTML5 screen that displays the value of the global variable that is defined in this screen.</text>
+                </answer>
+                <onEnterAssignment>
+                    $global:myVariable = "Hello World";
+                </onEnterAssignment>
+            </question>
+            <question type="32" key="#2" title="HTML5 screen">
+                <answer key="#2_1" nextQuestionKey="END">
+                    <text>webapp://HTML5_Tutorial/index.html</text>
+                </answer>
+            </question>
+            <moveletStartAssignment>
+                zip = getDocument($document:"HTML5_DEMO", "WebApp");
+                deployWebapp(zip, "HTML5_Tutorial");
+            </moveletStartAssignment>
+            <document documentPool="HTML5_DEMO" />
+        </movelet>
+        <participant participantKey="${#Project#participantKey}" name="${#Project#participantName}" deviceAddress="${#Project#deviceAddress}" />
+    </moveletSet>
+</MovilizerRequest>
