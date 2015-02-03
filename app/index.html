@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="MovilizerApp">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -36,6 +36,16 @@
     <script src="components/productsTable/controllers/table.js"></script>
     <script src="components/productsTable/factories/productsFactory.js"></script>
 
+    <script type="text/javascript">
+    var ON_DEVICE_READY = (function () {
+        var deviceReady = function() {
+            angular.bootstrap(document, ['MovilizerApp']);
+        };
+        //To avoid racing conditions this is best (don't use onload or on domReady)
+        document.addEventListener("deviceready", deviceReady, false);
+        return deviceReady;
+    }());
+    </script>
 </head>
 
 <body>
