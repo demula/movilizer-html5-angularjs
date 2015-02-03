@@ -2,18 +2,26 @@
     "use strict";
     /**
      * @ngdoc function
-     * @name HelloBannerModule.controller:BannerCtrl
+     * @name ProductsTableModule.controller:TableCtrl
      * @description
-     * # BannerCtrl
-     * Controller of the HelloBannerModule
+     * # TableCtrl
+     * Controller of the ProductsTableModule
      */
     angular
-        .module('HelloBannerModule')
-        .controller('BannerCtrl', function ($scope) {
+        .module('ProductsTableModule')
+        .controller('TableCtrl', function ($scope, ProductsFactory) {
             $scope.awesomeThings = [
                 'Movilizer',
                 'AngularJS',
                 'HTML5'
             ];
+            ProductsFactory.getProducts(10, 1, ["name"]).then(
+                function(products) {
+                    $scope.productsInTable = products;
+                },
+                function(error) {
+                    $scope.productsInTable = [error];
+                }
+            );
         });
 })();

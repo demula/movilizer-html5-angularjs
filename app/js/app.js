@@ -11,6 +11,8 @@
     angular
         .module('MovilizerApp', [
             'HelloBannerModule',
+            'MovilizerModule',
+            'ProductsTableModule',
             'ngRoute'
         ])
         .config(function ($routeProvider) {

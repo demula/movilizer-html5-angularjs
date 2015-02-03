@@ -2,19 +2,22 @@
     "use strict";
     /**
      * @ngdoc overview
-     * @name HelloBannerModule
+     * @name ProductsTableModule
      * @description
-     * # HelloBannerModule
+     * # ProductsTableModule
      *
-     * Banner place holder for welcome screen.
+     * Table screen.
      */
     angular
-        .module('HelloBannerModule', ['ngRoute'])
+        .module('ProductsTableModule', [
+            'ngRoute',
+            'MovilizerModule'
+        ])
         .config(function ($routeProvider) {
             $routeProvider
-                .when('/', {
-                    templateUrl: 'components/helloBanner/views/banner.html',
-                    controller: 'BannerCtrl'
+                .when('/productsTable', {
+                    templateUrl: 'components/productsTable/views/productsTable.html',
+                    controller: 'TableCtrl'
         });
     });
 })();

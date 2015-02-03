@@ -6,6 +6,9 @@
      * @description
      * # MasterdataFactory
      * Factory to query masterdata
+     *
+     * https://devtools.movilizer.com/confluence/display/DEV21/HTML5+queryMasterData
+     * https://devtools.movilizer.com/confluence/display/DOC21/queryMasterData+method
      */
 angular
     .module('MovilizerModule')
@@ -18,8 +21,8 @@ angular
                         if ("OK" == result) deferred.reject(result);
                         deferred.resolve(result);
                     },
-                    function (result) {
-                        deferred.reject(result);
+                    function (error) {
+                        deferred.reject(error);
                     }
                 );
                 return deferred.promise;
