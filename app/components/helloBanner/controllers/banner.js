@@ -15,5 +15,8 @@
                 'AngularJS',
                 'HTML5'
             ];
+
+            $scope.productTableView = "/productsTable";
+            $scope.productTableLinkText = "Go to the Products Table!";
         });
 })();

@@ -1,26 +1,28 @@
 <MovilizerRequest systemId="${#Project#SystemID}" systemPassword="${#Project#Password}" requestTrackingKey=""
-                  useAutoAcknowledge="true" xmlns="http://movilitas.com/movilizer/v11">
-    <moveletDelete moveletKey="MOV01" />
+                  useAutoAcknowledge="true" xmlns="http://movilitas.com/movilizer/v12" numResponses="0" >
+    <moveletDelete moveletKey="com.movilizer.html5.angularjs.examples.productsTable" moveletKeyExtension="DEV" ignoreExtensionKey="false"  />
     <moveletSet>
-        <movelet moveletKey="MOV01" name="myMovelet" moveletType="MULTI" initialQuestionKey="#1" >
-            <question type="0" title="myScreen" key="#1">
-                <answer key="#1_1" nextQuestionKey="#2">
-                    <text>The next screen is an HTML5 screen that displays the value of the global variable that is defined in this screen.</text>
-                </answer>
-                <onEnterAssignment>
-                    $global:myVariable = "Hello World";
-                </onEnterAssignment>
-            </question>
-            <question type="32" key="#2" title="HTML5 screen">
-                <answer key="#2_1" nextQuestionKey="END">
-                    <text>webapp://HTML5_Tutorial/index.html</text>
+        <movelet moveletKey="com.movilizer.html5.angularjs.examples.productsTable" moveletVersion="1" moveletKeyExtension="DEV" moveletType="MULTI" initialQuestionKey="#1" >
+            <question type="32" key="#1" title="Products table example">
+                <answer key="#1_1" nextQuestionKey="END">
+                    <text>webapp://ProductsTableWebApp/index.html</text>
                 </answer>
             </question>
             <moveletStartAssignment>
-                zip = getDocument($document:"HTML5_DEMO", "WebApp");
-                deployWebapp(zip, "HTML5_Tutorial");
+                $global:HTML5_ProductsTable_Tutorial_config = {
+                "globals"; : {}
+                "locals"; : {}
+                "masterdataPools"; : {
+                "MD_PRODUCTS"; : 'MD_PRODUCTS'
+                }
+                };
+
+                zip = getDocument($document:"HTML5_ProductsTable_Tutorial_POOL", "ProductsTableWebApp");
+                deployWebapp(zip, "ProductsTableWebApp");
             </moveletStartAssignment>
-            <document documentPool="HTML5_DEMO" />
+            <name>Products table example</name>
+            <masterdata masterdataPool="MD_PRODUCTS" masterdataGroup="ALL" masterdataOrphanTTL="0"/>
+            <document documentPool="HTML5_ProductsTable_Tutorial_POOL" />
         </movelet>
         <participant participantKey="${#Project#participantKey}" name="${#Project#participantName}" deviceAddress="${#Project#deviceAddress}" />
     </moveletSet>
